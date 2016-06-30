@@ -7,7 +7,7 @@ weatherForm.onsubmit = showWeather;
 var clearBtn = document.getElementById("clear-btn");
 clearBtn.onclick = clearResults;
 
-var resultsDiv = document.getElementById("results");
+var resultsList = document.getElementById("results-list");
 var inputCityField = document.getElementById("input-city");
 
 function showWeather() {
@@ -27,7 +27,7 @@ function showWeather() {
         temperature: data.main.temp,
         description: data.weather[0].description
       };
-      appendParagraph(weatherInfo, resultsDiv);
+      appendItem(weatherInfo, resultsList);
     } else {
       alert(data.message)
     }
@@ -55,35 +55,35 @@ function getWeatherInfo(URI) {
   return promise;
 }
 
-function appendParagraph(data, target) {
-  var paragraph = document.createElement("P");
+function appendItem(data, target) {
+  var listItem = document.createElement("li");
 
   var citySpan = document.createElement("SPAN");
   var cityTxt = document.createTextNode(data.city + ', ');
   citySpan.appendChild(cityTxt);
   citySpan.className = "city-span";
-  paragraph.appendChild(citySpan);
+  listItem.appendChild(citySpan);
 
   var countryTempSpan = document.createElement("SPAN");
   var countryTempTxt = document.createTextNode(data.country + ": " 
     + data.temperature + "°C, ");
   countryTempSpan.appendChild(countryTempTxt);
   countryTempSpan.className = "country-temp-span";
-  paragraph.appendChild(countryTempSpan);
+  listItem.appendChild(countryTempSpan);
 
   var descSpan = document.createElement("SPAN");
   var descTxt = document.createTextNode(data.description);
   descSpan.appendChild(descTxt);
   descSpan.className = "desc-span";
-  paragraph.appendChild(descSpan);
+  listItem.appendChild(descSpan);
 
-  target.appendChild(paragraph);
+  target.appendChild(listItem);
 };
 
 function clearResults() {
   weatherForm.reset();
-  while (resultsDiv.firstChild) {
-    resultsDiv.removeChild(resultsDiv.firstChild);
+  while (resultsList.firstChild) {
+    resultsList.removeChild(resultsList.firstChild);
   }
 }
 
