@@ -1,0 +1,11 @@
+ul.dashed {
+  margin: 0;
+  padding: 0;
+}
+ul.dashed {
+  list-style-type: none;
+}
+ul.dashed > li:before {
+  content: "-";
+  padding-right: 5px;
+}
