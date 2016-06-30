@@ -7,14 +7,20 @@
   <link rel="stylesheet" type="text/css" href="/css/styles.css">
 </head>
 <body>
-  <main>
-    <header>Get the weather!</header>
+  <main id="main-content">
+    <header id="main-heading">Get the weather!</header>
     <form name="weather-form" id="weather-form">
-      <input type="text" name="city" id="input-city">
-      <input type="submit" value="Search" id="search-button">
+      <div id="search-btn-div">
+        <input type="submit" value="Search" id="search-button">
+      </div>
+      <div id="query-div">
+        <input type="text" name="city" id="input-city" placeholder="What`s the weather in...">
+      </div>
     </form>
     <ul id="results-list" class="dashed"></ul>
-    <button id="clear-btn">Clear</button>
+    <div id="clear-btn-container">
+      <button id="clear-btn">clear</button>
+    </div>
   </main>
 
   <script src="/js/app.js"></script>
