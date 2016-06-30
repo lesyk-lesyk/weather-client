@@ -1,3 +1,6 @@
+(function() {
+'use strict';
+
 const API_URL = "http://api.openweathermap.org/data/2.5/";
 const APPID = "974cf989f33a668473fd4d704c86c5e8";
 
@@ -8,11 +11,11 @@ var clearBtn = document.getElementById("clear-btn");
 clearBtn.onclick = clearResults;
 
 var resultsList = document.getElementById("results-list");
-var inputCityField = document.getElementById("input-city");
 
 function showWeather() {
+  var city = weatherForm.elements["input-city"].value;
   var params = {
-    q: inputCityField.value,
+    q: city,
     units: "metric",
     APPID: APPID
   };
@@ -94,3 +97,4 @@ function encodeQueryData(data) {
   }
   return res.join("&");
 }
+})();
